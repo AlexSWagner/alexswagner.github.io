@@ -129,6 +129,27 @@ a.resume-link:hover {
     background-color: #45a049;
 }
 
+/*Contact Styling*/
+#contact {
+    margin: 40px 0;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+#contact h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#contact p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+
 /* Footer Styling */
 footer {
     background-color: #333;
