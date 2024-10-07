@@ -1,36 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alex Wagner's Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Wagner's Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>Welcome to My Portfolio</h1>
-  </header>
-  <section>
-   <h2>About Me</h2>
-  <p>Hello! I'm Alex Wagner, a passionate and dedicated computer science student with a focus on software engineering and game development. I have experience in several programming languages, including C++, Java, Python, and C#. I enjoy exploring different areas of computer science, and game development is a personal hobby of mine.</p>
-  
-  <p>Throughout my studies, I have built strong problem-solving skills, learned how to develop both software and games, and gained experience in web development using technologies like HTML, CSS, and JavaScript. I love working on projects that challenge me and push the limits of my creativity and technical skills.</p>
 
-  <p>I’m currently pursuing opportunities as a software developer or video game developer, and I’m excited to contribute to innovative projects. Feel free to check out my projects below or get in touch!</p>
-</section>
-  <section>
-    <h2>My Projects</h2>
-    <ul>
-      <li>Project 1: <a href="#">Link to Project 1</a></li>
-      <li>Project 2: <a href="#">Link to Project 2</a></li>
-      <li>Project 3: <a href="#">Link to Project 3</a></li>
-    </ul>
-  </section>
-  <section>
-  <h2>Resume</h2>
-  <p>You can view my resume <a href="resume.pdf" target="_blank">here</a>.</p>
-</section>
-  <footer>
-    <p>Contact me at <a href="mailto:alex@example.com">alex@example.com</a></p>
-  </footer>
+    <header>
+        <h1>Alex Wagner</h1>
+        <p>Software Engineer | Game Developer</p>
+    </header>
+
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Resume</a>
+    </nav>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hello! I'm Alex Wagner, a passionate and dedicated computer science student with a focus on software engineering and game development. I have experience in several programming languages, including C++, Java, Python, and C#. I enjoy exploring different areas of computer science, and game development is a personal hobby of mine.</p>
+            <p>I’m currently pursuing opportunities as a software developer or video game developer, and I’m excited to contribute to innovative projects. Feel free to check out my projects below or get in touch!</p>
+        </section>
+
+        <section id="projects">
+            <h2>My Projects</h2>
+            <ul>
+                <li>Project 1: <a href="https://github.com/AlexSWagner/my-awesome-project">My Awesome Project</a> - A Python-based application that helps manage tasks.</li>
+                <li>Project 2: <a href="https://github.com/AlexSWagner/game-project">Game Project</a> - A 2D platformer game developed using Unity and C#.</li>
+            </ul>
+        </section>
+
+        <section id="resume">
+            <h2>Resume</h2>
+            <p>You can view my resume <a class="resume-link" href="resume.pdf" target="_blank">here</a>.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 Alex Wagner. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
