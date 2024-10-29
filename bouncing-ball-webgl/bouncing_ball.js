@@ -1,16 +1,18 @@
 const canvas = document.getElementById("webgl-canvas");
 const gl = canvas.getContext("webgl");
 
-// Set up canvas size to be responsive
+// Set up canvas size to match CSS styling
 function resizeCanvas() {
     const dpr = window.devicePixelRatio || 1;
-    canvas.width = window.innerWidth * dpr;
-    canvas.height = window.innerHeight * dpr;
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
     gl.viewport(0, 0, canvas.width, canvas.height);
 }
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
+// Check if WebGL is available
 if (!gl) {
     console.error("WebGL not supported in this browser.");
 }
