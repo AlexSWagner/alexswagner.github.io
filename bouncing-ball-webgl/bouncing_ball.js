@@ -105,8 +105,8 @@ gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 // Initialize ball position, velocity, and color cycling
 let x = canvas.width / 2;
 let y = canvas.height / 2;
-let xVelocity = window.innerWidth * 0.003;
-let yVelocity = window.innerHeight * 0.003;
+let xVelocity = 8;
+let yVelocity = 8;
 const uResolution = gl.getUniformLocation(program, "u_resolution");
 const uTranslation = gl.getUniformLocation(program, "u_translation");
 const uColor = gl.getUniformLocation(program, "u_color");
