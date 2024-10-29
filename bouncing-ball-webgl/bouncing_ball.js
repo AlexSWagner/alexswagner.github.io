@@ -105,19 +105,8 @@ gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 // Initialize ball position, velocity, and color cycling
 let x = canvas.width / 2;
 let y = canvas.height / 2;
-
-// Calculate velocity based on screen size
-const speedFactor = 0.005; // Adjust this value to change speed
-let xVelocity = Math.max(3, window.innerWidth * speedFactor);
-let yVelocity = Math.max(3, window.innerHeight * speedFactor);
-
-// Update velocities when window is resized
-function updateVelocities() {
-    xVelocity = Math.max(3, window.innerWidth * speedFactor);
-    yVelocity = Math.max(3, window.innerHeight * speedFactor);
-}
-window.addEventListener('resize', updateVelocities);
-
+let xVelocity = window.innerWidth * 0.003;
+let yVelocity = window.innerHeight * 0.003;
 const uResolution = gl.getUniformLocation(program, "u_resolution");
 const uTranslation = gl.getUniformLocation(program, "u_translation");
 const uColor = gl.getUniformLocation(program, "u_color");
