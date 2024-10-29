@@ -3,23 +3,22 @@ const gl = canvas.getContext("webgl");
 
 // Set up canvas size to match CSS styling
 function resizeCanvas() {
-    const dpr = window.devicePixelRatio || 1;
-    canvas.width = window.innerWidth * dpr;
-    canvas.height = window.innerHeight * dpr;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     gl.viewport(0, 0, canvas.width, canvas.height);
     
-    // Reset ball position to center when resizing
+    // Reset ball position to center
     x = canvas.width / 2;
     y = canvas.height / 2;
     
     // Update radius based on new canvas size
-    const radius = Math.min(canvas.width, canvas.height) * 0.05;
+    const newRadius = Math.min(canvas.width, canvas.height) * 0.05;
     
     // Recreate circle vertices with new radius
     positions.length = 0;
     for (let i = 0; i <= numSegments; i++) {
         const angle = (i / numSegments) * 2 * Math.PI;
-        positions.push(Math.cos(angle) * radius, Math.sin(angle) * radius);
+        positions.push(Math.cos(angle) * newRadius, Math.sin(angle) * newRadius);
     }
     
     // Update buffer with new positions
@@ -105,8 +104,7 @@ gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 // Initialize ball position, velocity, and color cycling
 let x = canvas.width / 2;
 let y = canvas.height / 2;
-let xVelocity = window.innerWidth * 0.003;
-let yVelocity = window.innerHeight * 0.003;
+let xVelocity = 3, yVelocity = 3;  // Fixed velocity values for consistent speed
 const uResolution = gl.getUniformLocation(program, "u_resolution");
 const uTranslation = gl.getUniformLocation(program, "u_translation");
 const uColor = gl.getUniformLocation(program, "u_color");
