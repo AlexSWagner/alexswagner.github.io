@@ -106,15 +106,9 @@ gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 let x = canvas.width / 2;
 let y = canvas.height / 2;
 
-// Updated velocity calculation for better cross-device performance
-const baseSpeed = 5; // Increase this value to make the ball move faster
-let xVelocity = (baseSpeed / 1000) * window.innerWidth;
-let yVelocity = (baseSpeed / 1000) * window.innerHeight;
-
-// Ensure minimum speed for smaller screens
-const minSpeed = 3;
-xVelocity = Math.max(xVelocity, minSpeed);
-yVelocity = Math.max(yVelocity, minSpeed);
+// Simple fixed velocity that works well across devices
+let xVelocity = 5;
+let yVelocity = 5;
 
 const uResolution = gl.getUniformLocation(program, "u_resolution");
 const uTranslation = gl.getUniformLocation(program, "u_translation");
