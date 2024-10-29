@@ -106,9 +106,17 @@ gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 let x = canvas.width / 2;
 let y = canvas.height / 2;
 
-// Simple fixed velocity that works well across devices
-let xVelocity = 5;
-let yVelocity = 5;
+// Calculate velocity based on screen size
+const speedFactor = 0.005; // Adjust this value to change speed
+let xVelocity = Math.max(3, window.innerWidth * speedFactor);
+let yVelocity = Math.max(3, window.innerHeight * speedFactor);
+
+// Update velocities when window is resized
+function updateVelocities() {
+    xVelocity = Math.max(3, window.innerWidth * speedFactor);
+    yVelocity = Math.max(3, window.innerHeight * speedFactor);
+}
+window.addEventListener('resize', updateVelocities);
 
 const uResolution = gl.getUniformLocation(program, "u_resolution");
 const uTranslation = gl.getUniformLocation(program, "u_translation");
