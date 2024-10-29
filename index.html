@@ -1,61 +1,64 @@
-/* Project Cards */
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 1rem 0;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Wagner's Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
 
-.project-card {
-    background: #ffffff;
-    border-radius: 8px;
-    padding: 1.5rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+<header>
+    <h1>Alex Wagner</h1>
+    <p>Software Engineer | Game Developer</p>
+</header>
 
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hello! I'm Alex Wagner, a passionate and dedicated computer science student with a focus on software engineering and game development. I have experience in several programming languages, including C++, Java, Python, and C#. I enjoy exploring different areas of computer science, and game development is a personal hobby of mine.</p>
+            <p>I’m currently pursuing opportunities as a software developer or video game developer, and I’m excited to contribute to innovative projects. Feel free to check out my projects below or get in touch!</p>
+        </section>
 
-.project-card h3 {
-    color: #333;
-    margin-bottom: 1rem;
-}
+        <section id="projects">
+    <h2>My Projects</h2>
+    <div class="project-grid">
+        <div class="project-card">
+            <h3>Animal Shelter Data Dashboard</h3>
+            <p>A comprehensive dashboard for analyzing and visualizing animal shelter data, built with Python and data analysis libraries.</p>
+            <a href="https://github.com/AlexSWagner/AnimalShelter_DataDashboard" class="project-link">View Project</a>
+        </div>
+        <div class="project-card">
+            <h3>PC Performance Monitor</h3>
+            <p>A real-time system monitoring tool that tracks CPU, memory, and disk usage with a clean user interface.</p>
+            <a href="https://github.com/AlexSWagner/PCMonitor" class="project-link">View Project</a>
+        </div>
+        <div class="project-card">
+            <h3>Secure Folder Encryption</h3>
+            <p>A security tool that provides easy-to-use folder encryption for protecting sensitive files and data.</p>
+            <a href="https://github.com/AlexSWagner/FolderEncryptor" class="project-link">View Project</a>
+        </div>
+    </div>
+</section>
 
-.project-card p {
-    color: #666;
-    margin-bottom: 1.5rem;
-}
+        <section id="resume">
+            <h2>Resume</h2>
+            <p>You can view my resume <a class="resume-link" href="resume.docx" target="_blank">here</a>.</p>
+        </section>
+    </div>
 
-.project-link {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background 0.3s ease;
-}
+<section id="contact">
+    <h2>Contact Me</h2>
+    <p>If you'd like to get in touch, feel free to email me at 
+        <a href="mailto:alexander.wagner@snhu.edu">alexander.wagner@snhu.edu</a>.
+    </p>
+</section>
+    
+    <footer>
+        <p>© 2024 Alex Wagner. All rights reserved.</p>
+    </footer>
 
-.project-link:hover {
-    background: #0056b3;
-}
-
-/* Resume Link Styling */
-.resume-link {
-    display: inline-block;
-    padding: 0.5rem 1.5rem;
-    background: #28a745;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
-}
-
-.resume-link:hover {
-    background: #218838;
-    transform: scale(1.05);
-} 
+</body>
+</html>
