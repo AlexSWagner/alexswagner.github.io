@@ -163,7 +163,7 @@ ul li a:hover {
     transform: scale(1.05);
 }
 
-/* Updated Resume Button */
+/* Resume Button */
 a.resume-link {
     display: inline-block;
     padding: 8px 24px; /* Smaller padding */
