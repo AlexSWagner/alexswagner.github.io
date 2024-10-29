@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebGL Bouncing Ball</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #webgl-canvas {
+            width: 100vw;
+            height: 100vh;
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <canvas id="webgl-canvas" width="800" height="600"></canvas>
+    <canvas id="webgl-canvas"></canvas>
     <script src="bouncing_ball.js"></script>
 </body>
 </html>
