@@ -73,7 +73,7 @@ const program = createProgram(gl, vertexShader, fragmentShader);
 
 // Define geometry for the ball
 const numSegments = 100;
-const radius = Math.min(canvas.width, canvas.height) * 0.05; // Dynamic radius
+const radius = Math.min(canvas.width, canvas.height) * 0.08; // Dynamic radius
 const positions = [];
 for (let i = 0; i <= numSegments; i++) {
     const angle = (i / numSegments) * 2 * Math.PI;
