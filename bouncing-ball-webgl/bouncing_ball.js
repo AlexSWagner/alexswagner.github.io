@@ -8,9 +8,30 @@ function resizeCanvas() {
     canvas.width = rect.width * dpr;
     canvas.height = rect.height * dpr;
     gl.viewport(0, 0, canvas.width, canvas.height);
+    
+    // Reset ball position to center when resizing
+    x = canvas.width / 2;
+    y = canvas.height / 2;
+    
+    // Recalculate radius based on new dimensions
+    const newRadius = Math.min(canvas.width, canvas.height) * 0.05;
+    
+    // Update ball vertices with new radius
+    positions.length = 0;
+    for (let i = 0; i <= numSegments; i++) {
+        const angle = (i / numSegments) * 2 * Math.PI;
+        positions.push(Math.cos(angle) * newRadius, Math.sin(angle) * newRadius);
+    }
+    
+    // Update buffer
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 }
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
+
+// Add orientation change listener
+window.addEventListener('orientationchange', function() {
+    setTimeout(resizeCanvas, 100); // Small delay to ensure proper handling
+});
 
 // Check if WebGL is available
 if (!gl) {
@@ -88,7 +109,7 @@ gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 // Initialize ball position, velocity, and color cycling
 let x = canvas.width / 2;
 let y = canvas.height / 2;
-let xVelocity = 1.5, yVelocity = 1.5;
+let xVelocity = 0.8, yVelocity = 0.8;  // Ball speed
 const uResolution = gl.getUniformLocation(program, "u_resolution");
 const uTranslation = gl.getUniformLocation(program, "u_translation");
 const uColor = gl.getUniformLocation(program, "u_color");
