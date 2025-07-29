@@ -5,48 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex Wagner's Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header>
     <h1>Alex Wagner</h1>
-    <p>Software Engineer | Game Developer</p>
+    <p>Software Engineer | Android &amp; Game Developer</p>
 </header>
 
 <div class="container">
     <section id="about">
         <h2>About Me</h2>
-        <p>I'm Alex Wagner, a passionate and dedicated computer science student with comprehensive knowledge in software engineering, web development, and game development. With experience in multiple programming languages, including C++, Java, Python, and C#, I’m eager to explore all areas of computer science. Game development is a personal hobby that I actively pursue, and I’m currently seeking opportunities as a software developer, web developer, or video game developer. I’m excited to contribute to innovative projects and invite you to explore my work below or reach out to connect.</p>
+        <p>Hi, I'm Alex Wagner. I'm a software engineer with a passion for building things that people love to use. I'm on track to graduate with my B.S. in Computer Science this October and am looking for a full-time role where I can make a real impact. My main area of expertise is Android development with Kotlin, where I've spent countless hours building a complex, production-ready application from scratch. But my curiosity doesn't stop there; I'm also proficient in C++, Java, Python, and C#. When I'm not coding, you can usually find me developing indie games—a hobby that constantly pushes my creativity and technical skills. I love a good challenge and am excited to bring my blend of experience to an innovative team. Please explore my work below.</p>
     </section>
 
     <section id="projects">
         <h2>My Projects</h2>
+        
+        <!-- Featured Project: XelaBooks -->
+        <div class="project-card-featured">
+            <div class="project-image-container">
+                <img src="https://placehold.co/400x700/34495e/ffffff?text=XelaBooks+App\n(Your+Screenshot)" alt="XelaBooks App Demo" class="project-image" onerror="this.onerror=null;this.src='https://placehold.co/400x700/cccccc/ffffff?text=Image+Not+Found';">
+            </div>
+            <div class="project-content">
+                <h3>XelaBooks - Audiobook Player</h3>
+                <p>A premium, user-centric audiobook player for Android, built for enthusiasts who want ultimate control over their personal library. XelaBooks provides a unified, beautiful, and ad-free interface to manage and play audiobooks from multiple sources.</p>
+                
+                <h4>Key Features:</h4>
+                <ul>
+                    <li><strong>Multi-Source Library:</strong> Import audiobooks directly from Google Drive, Microsoft OneDrive, or local device folders.</li>
+                    <li><strong>Public Domain Access:</strong> Integrated search and download from the Internet Archive's massive LibriVox collection.</li>
+                    <li><strong>Metadata Enrichment:</strong> Automatically fetches high-quality cover art and book details from the Google Books and Open Library APIs.</li>
+                    <li><strong>Cloud Sync & Backup:</strong> Optional Firebase accounts allow users to back up and restore listening progress, library state, and bookmarks.</li>
+                    <li><strong>Full-Featured Player:</strong> Includes background playback, a persistent mini-player, advanced bookmarking with notes, and custom theming.</li>
+                </ul>
+
+                <h4>Architecture & Tech Stack:</h4>
+                <p>Built on a modern, scalable <strong>MVVM architecture</strong> with a focus on clean code and separation of concerns. The entire UI is developed with <strong>Jetpack Compose</strong> and Material 3 design principles.</p>
+                <div class="tech-stack"><strong>Technologies:</strong> Kotlin, Hilt (DI), Coroutines, StateFlow, Room, Retrofit, Firebase (Auth & Firestore), ExoPlayer, Google Drive & OneDrive APIs.</div>
+                
+                <div class="project-links">
+                    <a href="#" class="project-link disabled-link">Coming Soon to Play Store</a>
+                    <span class="repo-note">Repository is private (Proprietary)</span>
+                </div>
+            </div>
+        </div>
+
         <div class="project-grid">
             <div class="project-card">
-                <h3>Animal Shelter Data Dashboard</h3>
-                <p>A comprehensive dashboard for analyzing and visualizing animal shelter data, built with Python, MongoDB, and Dash.</p>
-                <a href="https://github.com/AlexSWagner/AnimalShelter_DataDashboard" class="project-link">View Project</a>
-            </div>
-            <div class="project-card">
                 <h3>SysVital</h3>
-                <p>SysVital is a lightweight Windows system monitoring tool that provides real-time insights into hardware performance, offering comprehensive tracking of CPU, GPU, and RAM usage with both dark and light themes, and a compact mode for minimal desktop footprint. Optimized for Intel and NVIDIA hardware, the application allows users to monitor top processes, log performance metrics, and view detailed system information with easy installation options.</p>
-                <a href="https://github.com/AlexSWagner/SysVital" class="project-link">View Project</a>
+                <p>A lightweight Windows system monitoring tool that provides real-time insights into hardware performance, offering comprehensive tracking of CPU, GPU, and RAM usage. Optimized for Intel and NVIDIA hardware.</p>
+                <a href="https://github.com/AlexSWagner/SysVital" class="project-link" target="_blank">View on GitHub</a>
             </div>
             <div class="project-card">
                 <h3>Secure Folder Encryption</h3>
-                <p>A security tool that provides easy-to-use folder encryption for protecting sensitive files and data.</p>
-                <a href="https://github.com/AlexSWagner/FolderEncryptor" class="project-link">View Project</a>
-            </div>
-            <div class="project-card">
-                <h3>WebGL Bouncing Ball</h3>
-                <p>A WebGL animation with a resizing canvas. Utilizing GLSL shaders and JavaScript for dynamic graphics rendering and collision physics.</p>
-                <a href="https://AlexSWagner.github.io/bouncing-ball-webgl/bouncing_ball.html" class="project-link">View Project</a>
+                <p>A security tool that provides easy-to-use folder encryption for protecting sensitive files and data on Windows using modern encryption standards.</p>
+                <a href="https://github.com/AlexSWagner/FolderEncryptor" class="project-link" target="_blank">View on GitHub</a>
             </div>
             <div class="project-card">
                 <h3>Slayermon 2D RPG Scripts</h3>
-                <p>Slayermon is a 2D RPG I built to showcase my game development skills. You play as a ninja slaying monsters in a village, cave, and forest. Developed in Unity with C#, it features player movement, combat, quests, NPCs, and teleportation. These scripts highlight my ability to create core game systems from scratch.</p>
-                <a href="https://github.com/AlexSWagner/Slayermon-2D-RPG-Scripts" class="project-link">View Project</a>
+                <p>A collection of C# scripts for Unity, demonstrating core game systems including player movement, combat, quest management, NPCs, and teleportation for a 2D RPG.</p>
+                <a href="https://github.com/AlexSWagner/Slayermon-2D-RPG-Scripts" class="project-link" target="_blank">View on GitHub</a>
             </div>
         </div>
     </section>
@@ -55,15 +77,13 @@
         <h2>Resume</h2>
         <p>You can view my resume <a class="resume-link" href="resume.docx" target="_blank">here</a>.</p>
     </section>
+    
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>If you'd like to get in touch, feel free to email me at <a href="mailto:alexander.wagner@snhu.edu">alexander.wagner@snhu.edu</a>.</p>
+    </section>
 </div>
 
-<section id="contact">
-    <h2>Contact Me</h2>
-    <p>If you'd like to get in touch, feel free to email me at 
-        <a href="mailto:alexander.wagner@snhu.edu">alexander.wagner@snhu.edu</a>.
-    </p>
-</section>
-    
 <footer>
     <p>© 2024 Alex Wagner. All rights reserved.</p>
 </footer>
