@@ -42,7 +42,7 @@
                 </div>
                 <!-- Navigation Button -->
                 <button class="next-image-btn" aria-label="Next Image">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </button>
             </div>
             <div class="project-content">
@@ -114,29 +114,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to set the base styles for the image stack
     const setupStack = () => {
         images.forEach((image, index) => {
+            const isTopImage = index === images.length - 1;
+            const stackLevel = images.length - 1 - index;
+            
             // Calculate horizontal offset for the clean, vertical stack effect
-            const xOffset = (images.length - 1 - index) * 10; // Increased offset for more visibility
+            const xOffset = isTopImage ? 0 : stackLevel * 10;
             
             // Apply transform for position
             image.style.transform = `translateX(${xOffset}px)`;
-            
-            // Set z-index to control stacking order
             image.style.zIndex = index;
+            image.style.cursor = isTopImage ? 'default' : 'pointer';
             
-            // Make lower images slightly transparent
-            image.style.opacity = 1 - (images.length - 1 - index) * 0.1;
-            
-            // Set cursor to pointer for non-top images
-            image.style.cursor = 'pointer';
+            // Set opacity directly. The updated CSS ensures this change is INSTANT.
+            image.style.opacity = isTopImage ? '1' : 1 - stackLevel * 0.15; // Slightly more opacity for underlying images
         });
-
-        // Style the top image distinctly
-        if (images.length > 0) {
-            const topImage = images[images.length - 1];
-            topImage.style.opacity = '1';
-            topImage.style.transform = 'translateX(0)';
-            topImage.style.cursor = 'default'; // Default cursor for the main image
-        }
     };
 
     // Function to cycle to the next image
@@ -145,7 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (stackContainer.classList.contains('animating') || images.length < 2) return;
         stackContainer.classList.add('animating');
 
-        // Get the top image (last in the array)
         const topImage = images[images.length - 1];
         
         // Add the animation class to trigger the shuffle effect
@@ -153,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Use a timeout that matches the animation duration for reliability
         setTimeout(() => {
-            // Remove the animation class
             topImage.classList.remove('shuffling');
             
             // Move the element to the bottom of the stack (start of the array)
@@ -172,18 +161,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial setup when the page loads
     setupStack();
 
-    // Event listener for the next button
+    // Event listeners
     if (nextBtn) {
         nextBtn.addEventListener('click', cycleImages);
     }
     
-    // Event listener to allow clicking on any non-top image to cycle
     stackContainer.addEventListener('click', (e) => {
-        if (e.target.classList.contains('stack-image')) {
-            // Check if the clicked image is not the top one
-            if (e.target !== images[images.length - 1]) {
-                cycleImages();
-            }
+        if (e.target.classList.contains('stack-image') && e.target !== images[images.length - 1]) {
+            cycleImages();
         }
     });
 });
