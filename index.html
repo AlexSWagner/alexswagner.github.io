@@ -125,8 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image.style.zIndex = index;
             image.style.cursor = isTopImage ? 'default' : 'pointer';
             
-            // Set opacity directly. The updated CSS ensures this change is INSTANT.
-            image.style.opacity = isTopImage ? '1' : 1 - stackLevel * 0.15; // Slightly more opacity for underlying images
+            // **FIX: Opacity is no longer set here, all images are fully opaque**
         });
     };
 
