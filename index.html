@@ -114,12 +114,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to set the base styles for the image stack
     const setupStack = () => {
         images.forEach((image, index) => {
-            // Calculate offsets for the fanned-out, vertical stack effect
-            const xOffset = (images.length - 1 - index) * 8;
-            const yOffset = (images.length - 1 - index) * 4;
+            // Calculate horizontal offset for the clean, vertical stack effect
+            const xOffset = (images.length - 1 - index) * 10; // Increased offset for more visibility
             
             // Apply transform for position
-            image.style.transform = `translateX(${xOffset}px) translateY(${yOffset}px)`;
+            image.style.transform = `translateX(${xOffset}px)`;
             
             // Set z-index to control stacking order
             image.style.zIndex = index;
@@ -135,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (images.length > 0) {
             const topImage = images[images.length - 1];
             topImage.style.opacity = '1';
-            topImage.style.transform = 'translateX(0) translateY(0)';
+            topImage.style.transform = 'translateX(0)';
             topImage.style.cursor = 'default'; // Default cursor for the main image
         }
     };
