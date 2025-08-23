@@ -18,18 +18,12 @@
 
 <div class="container">
    <section id="about">
-  <h2>About Me</h2>
-  <p>I’m a software developer who thrives on turning ideas into polished, user-focused applications. My work spans production-ready Android apps, efficient Windows utilities, and gameplay systems for Unity — all built with an emphasis on clean architecture, performance, and long-term maintainability. From the first line of code to the final deployment, I take ownership of delivering high-quality solutions that people can rely on every day.</p>
-
-  <p>My toolkit includes Kotlin, C#, C++, Java, and Python, along with frameworks and tools like Jetpack Compose, Room, Firebase, .NET Core, and Unity. I’m currently expanding into Unreal Engine and Blueprints to strengthen my game development capabilities.</p>
-
-  <p>I’m pursuing a Bachelor’s degree in Computer Science with a concentration in Software Engineering (graduating October 2025) and bring hands-on experience across the full software development lifecycle. Whether it’s crafting intuitive mobile experiences, optimizing system performance, or building engaging gameplay mechanics, I’m passionate about creating software that’s both functional and enjoyable to use.</p>
-
-  <p>I’m seeking a remote role where I can collaborate with an experienced engineering team, contribute to impactful projects, and continue growing in mobile, web, or game development.</p>
-</section>
-
-
-
+      <h2>About Me</h2>
+      <p>I’m a software developer who thrives on turning ideas into polished, user-focused applications. My work spans production-ready Android apps, efficient Windows utilities, and gameplay systems for Unity — all built with an emphasis on clean architecture, performance, and long-term maintainability. From the first line of code to the final deployment, I take ownership of delivering high-quality solutions that people can rely on every day.</p>
+      <p>My toolkit includes Kotlin, C#, C++, Java, and Python, along with frameworks and tools like Jetpack Compose, Room, Firebase, .NET Core, and Unity. I’m currently expanding into Unreal Engine and Blueprints to strengthen my game development capabilities.</p>
+      <p>I’m pursuing a Bachelor’s degree in Computer Science with a concentration in Software Engineering (graduating October 2025) and bring hands-on experience across the full software development lifecycle. Whether it’s crafting intuitive mobile experiences, optimizing system performance, or building engaging gameplay mechanics, I’m passionate about creating software that’s both functional and enjoyable to use.</p>
+      <p>I’m seeking a remote role where I can collaborate with an experienced engineering team, contribute to impactful projects, and continue growing in mobile, web, or game development.</p>
+    </section>
 
     <section id="projects">
         <h2>My Projects</h2>
@@ -37,7 +31,19 @@
         <!-- Featured Project: XelaBooks -->
         <div class="project-card-featured">
             <div class="project-image-container">
-                <img src="https://raw.githubusercontent.com/AlexSWagner/alexswagner.github.io/main/images/HomeScreenExample.png" alt="XelaBooks App Demo" class="project-image" onerror="this.onerror=null;this.src='https://placehold.co/400x700/cccccc/ffffff?text=Image+Not+Found';">
+                <!-- Image Stack -->
+                <div class="image-stack">
+                    <!-- Add your 5 image sources here. The last image in the list will be the one on top initially. -->
+                    <img src="https://placehold.co/400x700/a9a9a9/ffffff?text=Screen+1" alt="XelaBooks App Screenshot 1" class="stack-image">
+                    <img src="https://placehold.co/400x700/2c3e50/ffffff?text=Screen+2" alt="XelaBooks App Screenshot 2" class="stack-image">
+                    <img src="https://placehold.co/400x700/1abc9c/ffffff?text=Screen+3" alt="XelaBooks App Screenshot 3" class="stack-image">
+                    <img src="https://placehold.co/400x700/34495e/ffffff?text=Screen+4" alt="XelaBooks App Screenshot 4" class="stack-image">
+                    <img src="https://raw.githubusercontent.com/AlexSWagner/alexswagner.github.io/main/images/HomeScreenExample.png" alt="XelaBooks App Screenshot 5" class="stack-image" onerror="this.onerror=null;this.src='https://placehold.co/400x700/cccccc/ffffff?text=Image+Not+Found';">
+                </div>
+                <!-- Navigation Button -->
+                <button class="next-image-btn" aria-label="Next Image">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
             </div>
             <div class="project-content">
                 <h3>XelaBooks - Audiobook Player</h3>
@@ -96,6 +102,79 @@
 <footer>
     <p>© 2024 Alex Wagner. All rights reserved.</p>
 </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const stackContainer = document.querySelector('.image-stack');
+    if (!stackContainer) return;
+
+    const images = Array.from(stackContainer.querySelectorAll('.stack-image'));
+    const nextBtn = document.querySelector('.next-image-btn');
+
+    // Function to set initial positions and styles of the image stack
+    const setupStack = () => {
+        images.forEach((image, index) => {
+            // Calculate visual offset for stacking effect
+            const offset = (images.length - 1 - index) * 6;
+            // Apply transform for position and scale
+            image.style.transform = `translateY(${offset}px) scale(${1 - (images.length - 1 - index) * 0.04})`;
+            // Set z-index to control stacking order
+            image.style.zIndex = index;
+            // Make lower images slightly transparent
+            image.style.opacity = 1 - (images.length - 1 - index) * 0.3;
+            // Set cursor to pointer for non-top images
+            image.style.cursor = 'pointer';
+        });
+
+        // Style the top image distinctly
+        if (images.length > 0) {
+            const topImage = images[images.length - 1];
+            topImage.style.opacity = '1';
+            topImage.style.transform = 'translateY(0) scale(1)';
+            topImage.style.cursor = 'default'; // Default cursor for the main image
+        }
+    };
+
+    // Function to cycle to the next image
+    const cycleImages = () => {
+        // Prevent clicking again while an animation is in progress
+        if (stackContainer.classList.contains('animating') || images.length < 2) return;
+        stackContainer.classList.add('animating');
+
+        // Get the top image (last in the array)
+        const topImage = images.pop();
+        
+        // Move it to the bottom of the stack (start of the array)
+        images.unshift(topImage); 
+
+        // Re-apply all styles to reflect the new order
+        setupStack();
+
+        // Allow clicking again after the CSS transition completes
+        setTimeout(() => {
+            stackContainer.classList.remove('animating');
+        }, 600); // This duration must match the transition time in style.css
+    };
+
+    // Initial setup when the page loads
+    setupStack();
+
+    // Event listener for the next button
+    if (nextBtn) {
+        nextBtn.addEventListener('click', cycleImages);
+    }
+    
+    // Event listener to allow clicking on any non-top image to cycle
+    stackContainer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('stack-image')) {
+            // Check if the clicked image is not the top one
+            if (e.target !== images[images.length - 1]) {
+                cycleImages();
+            }
+        }
+    });
+});
+</script>
 
 </body>
 </html>
