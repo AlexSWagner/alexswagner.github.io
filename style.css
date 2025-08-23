@@ -92,7 +92,7 @@ section h2 {
     overflow: hidden; /* Hide parts of the animation that go outside */
 }
 
-/* --- NEW STYLES FOR VERTICAL SHUFFLE ANIMATION --- */
+/* --- NEW STYLES FOR CLEAN VERTICAL SHUFFLE --- */
 
 .image-stack {
     position: relative;
@@ -100,6 +100,8 @@ section h2 {
     max-width: 350px;
     height: 650px; /* Adjust height based on your images' aspect ratio */
     margin: 0 auto;
+    /* Nudge the stack left to balance the fanned-out effect */
+    transform: translateX(-20px); 
 }
 
 .stack-image {
@@ -112,13 +114,12 @@ section h2 {
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     border: 1px solid rgba(0,0,0,0.1);
-    /* This transition applies when the stack re-orders, NOT during the main shuffle */
+    /* This transition applies when the stack re-orders */
     transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease-in-out;
 }
 
 /* This class triggers the shuffle animation */
 .shuffling {
-    /* The animation is more reliable than a transition for this effect */
     animation: shuffle-to-back 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
 }
 
@@ -126,18 +127,18 @@ section h2 {
 @keyframes shuffle-to-back {
     0% {
         /* Start at the top position */
-        transform: translateX(0) translateY(0);
+        transform: translateX(0);
         opacity: 1;
         z-index: 10; /* Bring to front during animation */
     }
     50% {
         /* Move out to the side */
-        transform: translateX(120%) translateY(20px);
+        transform: translateX(120%);
         opacity: 0.5;
     }
     100% {
         /* End at the bottom of the stack, mostly hidden */
-        transform: translateX(32px) translateY(16px); /* Matches the last item's position in the JS */
+        transform: translateX(40px); /* Matches the last item's position in the JS */
         opacity: 0;
         z-index: -1; /* Go behind everything temporarily */
     }
