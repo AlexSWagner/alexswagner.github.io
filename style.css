@@ -87,16 +87,69 @@ section h2 {
     justify-content: center;
     background-color: #f8f9fa;
     padding: 2rem;
+    position: relative; /* Crucial for positioning the button */
+    min-height: 500px; /* Ensure container has height */
 }
 
-.project-image {
+/* --- NEW STYLES FOR IMAGE STACK --- */
+
+.image-stack {
+    position: relative;
     width: 100%;
     max-width: 350px;
+    height: 650px; /* Adjust height based on your images' aspect ratio */
+    margin: 0 auto;
+}
+
+.stack-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: auto;
     object-fit: contain;
-    border-radius: 8px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    border: 1px solid rgba(0,0,0,0.1);
+    /* The smooth animation is handled by this transition */
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.6s ease-in-out;
+    will-change: transform, opacity; /* Performance optimization */
 }
+
+.next-image-btn {
+    position: absolute;
+    bottom: 3rem;
+    /* Center the button horizontally */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(44, 62, 80, 0.65);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100; /* Ensure it's on top of all images */
+    padding: 0;
+    outline: none;
+}
+
+.next-image-btn:hover {
+    background-color: rgba(44, 62, 80, 0.9);
+    transform: translateX(-50%) scale(1.1);
+}
+
+.next-image-btn svg {
+    stroke: white;
+    width: 28px;
+    height: 28px;
+}
+
+/* --- END OF NEW STYLES --- */
 
 .project-content {
     padding: 2rem 2.5rem;
@@ -278,18 +331,16 @@ footer p {
     }
 
     .project-image-container {
-        padding: 1rem;
-        background-color: transparent;
+        padding: 2rem 1rem; /* Adjust padding for mobile */
+        min-height: 450px; /* Adjust height for mobile */
     }
-
-    .project-image {
-        max-width: 100%;
-        box-shadow: none;
-        border-radius: 10px;
+    
+    .image-stack {
+        height: 550px; /* Adjust stack height for mobile */
     }
 
     .project-content {
-        padding: 1rem 1.2rem;
+        padding: 1.5rem;
     }
 
     /* Typography adjustments */
@@ -320,22 +371,7 @@ footer p {
         grid-template-columns: 1fr;
     }
 
-    /* Add subtle separation for long sections */
     section {
         padding: 20px;
-    }
-}
-
-/* Optional "Read More" toggle for mobile */
-@media (max-width: 600px) {
-    .read-more-content {
-        display: none;
-    }
-    .read-more-btn {
-        display: inline-block;
-        color: #1abc9c;
-        font-weight: bold;
-        cursor: pointer;
-        margin-top: 10px;
     }
 }
