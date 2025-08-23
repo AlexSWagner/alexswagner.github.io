@@ -111,15 +111,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let images = Array.from(stackContainer.querySelectorAll('.stack-image'));
     const nextBtn = document.querySelector('.next-image-btn');
 
-    // Function to set initial positions and styles of the image stack
+    // Function to set the base styles for the image stack
     const setupStack = () => {
         images.forEach((image, index) => {
-            // Calculate visual offset for the fanned-out stacking effect
-            const offset = (images.length - 1 - index) * 4;
-            const rotation = (images.length - 1 - index) * 3;
+            // Calculate offsets for the fanned-out, vertical stack effect
+            const xOffset = (images.length - 1 - index) * 8;
+            const yOffset = (images.length - 1 - index) * 4;
             
-            // Apply transform for position, rotation, and scale
-            image.style.transform = `translateX(${offset}px) rotate(${rotation}deg)`;
+            // Apply transform for position
+            image.style.transform = `translateX(${xOffset}px) translateY(${yOffset}px)`;
             
             // Set z-index to control stacking order
             image.style.zIndex = index;
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (images.length > 0) {
             const topImage = images[images.length - 1];
             topImage.style.opacity = '1';
-            topImage.style.transform = 'translateX(0) rotate(0deg)';
+            topImage.style.transform = 'translateX(0) translateY(0)';
             topImage.style.cursor = 'default'; // Default cursor for the main image
         }
     };
@@ -152,10 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add the animation class to trigger the shuffle effect
         topImage.classList.add('shuffling');
 
-        // Listen for when the animation ends
-        topImage.addEventListener('animationend', () => {
-            // This 'once: true' option automatically removes the event listener after it fires once
-            
+        // Use a timeout that matches the animation duration for reliability
+        setTimeout(() => {
             // Remove the animation class
             topImage.classList.remove('shuffling');
             
@@ -169,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Allow clicking again
             stackContainer.classList.remove('animating');
 
-        }, { once: true });
+        }, 700); // This duration MUST match the animation duration in style.css
     };
 
     // Initial setup when the page loads
