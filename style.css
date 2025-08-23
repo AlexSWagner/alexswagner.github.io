@@ -92,7 +92,7 @@ section h2 {
     overflow: hidden; /* Hide parts of the animation that go outside */
 }
 
-/* --- NEW STYLES FOR CLEAN VERTICAL SHUFFLE --- */
+/* --- STYLES FOR CLEAN VERTICAL SHUFFLE --- */
 
 .image-stack {
     position: relative;
@@ -123,23 +123,20 @@ section h2 {
     animation: shuffle-to-back 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
 }
 
-/* Keyframes define the steps of the shuffle animation */
+/* Keyframes define the steps of the shuffle animation (NO FADE) */
 @keyframes shuffle-to-back {
     0% {
         /* Start at the top position */
         transform: translateX(0);
-        opacity: 1;
         z-index: 10; /* Bring to front during animation */
     }
     50% {
         /* Move out to the side */
         transform: translateX(120%);
-        opacity: 0.5;
     }
     100% {
         /* End at the bottom of the stack, mostly hidden */
         transform: translateX(40px); /* Matches the last item's position in the JS */
-        opacity: 0;
         z-index: -1; /* Go behind everything temporarily */
     }
 }
