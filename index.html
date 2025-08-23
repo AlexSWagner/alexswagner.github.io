@@ -108,20 +108,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const stackContainer = document.querySelector('.image-stack');
     if (!stackContainer) return;
 
-    const images = Array.from(stackContainer.querySelectorAll('.stack-image'));
+    let images = Array.from(stackContainer.querySelectorAll('.stack-image'));
     const nextBtn = document.querySelector('.next-image-btn');
 
     // Function to set initial positions and styles of the image stack
     const setupStack = () => {
         images.forEach((image, index) => {
-            // Calculate visual offset for stacking effect
-            const offset = (images.length - 1 - index) * 6;
-            // Apply transform for position and scale
-            image.style.transform = `translateY(${offset}px) scale(${1 - (images.length - 1 - index) * 0.04})`;
+            // Calculate visual offset for the fanned-out stacking effect
+            const offset = (images.length - 1 - index) * 4;
+            const rotation = (images.length - 1 - index) * 3;
+            
+            // Apply transform for position, rotation, and scale
+            image.style.transform = `translateX(${offset}px) rotate(${rotation}deg)`;
+            
             // Set z-index to control stacking order
             image.style.zIndex = index;
+            
             // Make lower images slightly transparent
-            image.style.opacity = 1 - (images.length - 1 - index) * 0.3;
+            image.style.opacity = 1 - (images.length - 1 - index) * 0.1;
+            
             // Set cursor to pointer for non-top images
             image.style.cursor = 'pointer';
         });
@@ -130,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (images.length > 0) {
             const topImage = images[images.length - 1];
             topImage.style.opacity = '1';
-            topImage.style.transform = 'translateY(0) scale(1)';
+            topImage.style.transform = 'translateX(0) rotate(0deg)';
             topImage.style.cursor = 'default'; // Default cursor for the main image
         }
     };
@@ -142,18 +147,29 @@ document.addEventListener('DOMContentLoaded', () => {
         stackContainer.classList.add('animating');
 
         // Get the top image (last in the array)
-        const topImage = images.pop();
+        const topImage = images[images.length - 1];
         
-        // Move it to the bottom of the stack (start of the array)
-        images.unshift(topImage); 
+        // Add the animation class to trigger the shuffle effect
+        topImage.classList.add('shuffling');
 
-        // Re-apply all styles to reflect the new order
-        setupStack();
+        // Listen for when the animation ends
+        topImage.addEventListener('animationend', () => {
+            // This 'once: true' option automatically removes the event listener after it fires once
+            
+            // Remove the animation class
+            topImage.classList.remove('shuffling');
+            
+            // Move the element to the bottom of the stack (start of the array)
+            images.pop();
+            images.unshift(topImage);
 
-        // Allow clicking again after the CSS transition completes
-        setTimeout(() => {
+            // Re-apply all base styles to reflect the new order
+            setupStack();
+            
+            // Allow clicking again
             stackContainer.classList.remove('animating');
-        }, 600); // This duration must match the transition time in style.css
+
+        }, { once: true });
     };
 
     // Initial setup when the page loads
