@@ -77,19 +77,18 @@ section h2 {
 @media (min-width: 992px) {
     .project-card-featured {
         flex-direction: row;
-        align-items: flex-start; /* Prevents image container from stretching vertically */
+        align-items: flex-start;
     }
 }
 
 .project-image-container {
     flex: 1 1 40%;
     display: flex;
-    align-items: flex-start; /* Aligns image stack to the top */
+    align-items: flex-start;
     justify-content: center;
-    background-color: #ffffff; /* Corrects background color */
+    background-color: #ffffff;
     padding: 2rem;
-    position: relative; /* For positioning the button */
-    min-height: 500px; /* Ensure container has height */
+    position: relative; /* Crucial for positioning the button */
     overflow: hidden; /* Hide parts of the animation that go outside */
 }
 
