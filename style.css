@@ -17,11 +17,11 @@ body {
 
 /* Header Styling */
 header {
-    background-color: #2c3e50; /* Darker, more modern blue */
+    background-color: #2c3e50;
     color: white;
     padding: 50px 20px;
     text-align: center;
-    border-bottom: 5px solid #1abc9c; /* Teal accent */
+    border-bottom: 5px solid #1abc9c;
 }
 
 header h1 {
@@ -84,12 +84,13 @@ section h2 {
 .project-image-container {
     flex: 1 1 40%;
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     background-color: #ffffff;
     padding: 2rem;
-    position: relative; /* Crucial for positioning the button */
-    overflow: hidden; /* Hide parts of the animation that go outside */
+    position: relative;
+    overflow: visible;
 }
 
 /* --- STYLES FOR CLEAN VERTICAL SHUFFLE --- */
@@ -98,9 +99,8 @@ section h2 {
     position: relative;
     width: 100%;
     max-width: 350px;
-    height: 650px; /* Adjust height based on your images' aspect ratio */
+    height: 700px;
     margin: 0 auto;
-    /* Nudge the stack left to balance the fanned-out effect */
     transform: translateX(-20px); 
 }
 
@@ -114,38 +114,29 @@ section h2 {
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     border: 1px solid rgba(0,0,0,0.1);
-    /* Only transition the transform property. Opacity changes will be instant. */
     transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* This class triggers the shuffle animation */
 .shuffling {
     animation: shuffle-to-back 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
 }
 
-/* Keyframes define the steps of the shuffle animation (NO FADE) */
 @keyframes shuffle-to-back {
     0% {
-        /* Start at the top position */
         transform: translateX(0);
-        z-index: 10; /* Bring to front during animation */
+        z-index: 10;
     }
     50% {
-        /* Move out to the side */
         transform: translateX(120%);
     }
     100% {
-        /* End at the bottom of the stack, mostly hidden */
-        transform: translateX(40px); /* Matches the last item's position in the JS */
-        z-index: -1; /* Go behind everything temporarily */
+        transform: translateX(40px);
+        z-index: -1;
     }
 }
 
 .next-image-btn {
-    position: absolute;
-    bottom: 3rem;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
     background-color: rgba(44, 62, 80, 0.65);
     backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -157,14 +148,15 @@ section h2 {
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    z-index: 100; /* Ensure it's on top of all images */
+    z-index: 100;
     padding: 0;
     outline: none;
+    margin-top: 1.5rem;
 }
 
 .next-image-btn:hover {
     background-color: rgba(44, 62, 80, 0.9);
-    transform: translateX(-50%) scale(1.1);
+    transform: scale(1.1);
 }
 
 .next-image-btn svg {
@@ -178,6 +170,7 @@ section h2 {
 .project-content {
     padding: 2rem 2.5rem;
     flex: 1 1 60%;
+    background-color: #ffffff;
 }
 
 .project-content h3 {
@@ -233,6 +226,7 @@ section h2 {
     padding: 1rem;
     border-radius: 8px;
     margin-top: 1rem;
+    display: inline-block;
 }
 
 .project-links {
@@ -284,7 +278,7 @@ section h2 {
     color: #555;
     font-size: 1rem;
     margin-bottom: 1.5rem;
-    flex-grow: 1; /* Pushes the button to the bottom */
+    flex-grow: 1;
 }
 
 .project-link {
@@ -348,26 +342,24 @@ footer p {
 
 /* Mobile-first refinements */
 @media (max-width: 768px) {
-    /* Featured Project Layout */
     .project-card-featured {
         flex-direction: column;
         text-align: left;
     }
 
     .project-image-container {
-        padding: 2rem 1rem; /* Adjust padding for mobile */
-        min-height: 450px; /* Adjust height for mobile */
+        padding: 2rem 1rem;
+        min-height: 450px;
     }
     
     .image-stack {
-        height: 550px; /* Adjust stack height for mobile */
+        height: 550px;
     }
 
     .project-content {
         padding: 1.5rem;
     }
 
-    /* Typography adjustments */
     header h1 {
         font-size: 2.2rem;
     }
@@ -390,7 +382,6 @@ footer p {
         font-size: 0.95rem;
     }
 
-    /* Project Grid: tighter layout */
     .project-grid {
         grid-template-columns: 1fr;
     }
